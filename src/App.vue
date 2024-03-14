@@ -38,13 +38,19 @@
         </div>
         <div class="datop">
           <div class="texto-nombre">HP:</div>
-          <div class="texto-direccion">{{ pokemon.stats[0].base_stat }}</div>
+          <div class="texto-direccion" v-if="pokemon.stats">{{ pokemon.stats[0].base_stat }}</div>
         </div>
         <div class="datop">
           <div class="texto-nombre">Imagen</div>
-          <div class="texto-09-10"><img :src="pokemon.sprites.front_shiny" alt="">
+          <div class="texto-09-10" ><img :src="pokemon.sprites.front_shiny" alt="" v-if="pokemon.sprites">
           </div>
         </div>
+      </div>
+
+      <div class="q-pa-md">
+        <label for="`ID${i}`" style="color: black" v-for="(e,i) in pokemon.stats" :key="i">{{ e.stat.name }}
+            <q-linear-progress :id="`ID${i}`" :value="`0.${e.base_stat}`" :buffer="`0.${e.base_stat+10}`" rounded size="15px" style="backgroundColor: gray"/>
+        </label>
       </div>
 
   </div>
@@ -59,6 +65,8 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
+
+
   
   </q-layout>
 </div>
