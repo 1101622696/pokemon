@@ -4,13 +4,13 @@
 <div >
   <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-brown-8 text-black">
+    <q-header elevated class="bg-brown-8 text-WHITE">
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
             <img src="https://user-images.githubusercontent.com/9741252/81717987-83b84000-947b-11ea-9ac9-5ad1d59adf7a.png">
           </q-avatar>
-          Pokemon!
+          POKEMONN!!!
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -27,31 +27,27 @@
   </div>
   
     <div class="card">
+      
       <div  class="boletacomprada">
-        <div class="datop">
-          <div class="texto-nombre">Nombre</div>
           <div class="texto-nombrep">{{ pokemon.name }}</div>
-        </div>
         <div class="datop">
           <div class="texto-nombre">Peso</div>
           <div class="texto-telefono">{{ pokemon.weight }}</div>
         </div>
-        <div class="datop">
-          <div class="texto-nombre">HP:</div>
-          <div class="texto-direccion" v-if="pokemon.stats">{{ pokemon.stats[0].base_stat }}</div>
-        </div>
-        <div class="datop">
-          <div class="texto-nombre">Imagen</div>
-          <div class="texto-09-10" ><img :src="pokemon.sprites.front_shiny" alt="" v-if="pokemon.sprites">
-          </div>
-        </div>
+      <img :src="pokemon.sprites.front_shiny" alt="" v-if="pokemon.sprites">
+        <h4 v-for="(e, i) in pokemon.types" :key="i">Tipo: {{ e.type.name }} </h4>
       </div>
 
-      <div class="q-pa-md">
-        <label for="`ID${i}`" style="color: black" v-for="(e,i) in pokemon.stats" :key="i">{{ e.stat.name }}
-            <q-linear-progress :id="`ID${i}`" :value="`0.${e.base_stat}`" :buffer="`0.${e.base_stat+10}`" rounded size="15px" style="backgroundColor: gray"/>
-        </label>
-      </div>
+      <section class="linear-progress-section">
+        <div class="linear-progress" v-for="(e, i) in pokemon.stats" :key="i">
+          <label :for="'ID' + i" class="stat-name text-xs font-semibold text-black">{{ e.stat.name }}</label>
+          <q-linear-progress :id="'ID' + i" :value="progressValue(e.base_stat)" :buffer="bufferValue(e.base_stat + 10)" rounded size="10px" color="blue">
+            <div class="absolute-full flex flex-center">
+              <q-badge color="white" text-color="accent" :label="e.base_stat" />
+            </div>
+          </q-linear-progress>
+        </div>
+      </section>
 
   </div>
 
@@ -61,13 +57,11 @@
           <q-avatar>
             <img src="https://codeboost.com.br/projetos/pokeapi/img/img-pokeball-02.png">
           </q-avatar>
-          <div>Pokemon!</div>
+          <div>POKEDEX!!!</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
 
-
-  
   </q-layout>
 </div>
   </div>
@@ -91,6 +85,8 @@ async function traer() {
     console.log(error);
   } 
 }
+const progressValue=(baseStat)=>`0.${baseStat}`
+const bufferValue=(baseStat)=>`0.${baseStat+10}`
 
 </script>
 
