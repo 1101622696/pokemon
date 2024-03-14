@@ -35,6 +35,8 @@
           <div class="texto-telefono">{{ pokemon.weight }}</div>
         </div>
       <img :src="pokemon.sprites.front_shiny" alt="" v-if="pokemon.sprites">
+      <img :src="pokemon.sprites.other.showdown.front_shiny" alt="" v-if="pokemon.sprites">
+      <img :src="pokemon.sprites.other.showdown.back_shiny" alt="" v-if="pokemon.sprites">
         <h4 v-for="(e, i) in pokemon.types" :key="i">Tipo: {{ e.type.name }} </h4>
       </div>
 
