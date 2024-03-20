@@ -31,8 +31,8 @@
           <div class="imgprincipal">
       <img id="imgprincipal" :src="pokemon.sprites.front_shiny" alt="" v-if="pokemon.sprites">
     </div>
-      <img id="imgdetras":src="pokemon.sprites.other.showdown.front_shiny" alt="" v-if="pokemon.sprites">
-      <img id="imgdetras":src="pokemon.sprites.other.showdown.back_shiny" alt="" v-if="pokemon.sprites">
+      <img id="imgdetras" :src="pokemon.sprites.other.showdown.front_shiny" alt="" v-if="pokemon.sprites">
+      <img id="imgdetras" :src="pokemon.sprites.other.showdown.back_shiny" alt="" v-if="pokemon.sprites">
     </div>
     <div  class="datos" v-if="showcard">
       <div class="nombre">{{ pokemon.name }}</div>
